@@ -11,5 +11,8 @@
 |
 */
 
-Route::get('/', 'MainController@index');
+Route::get('/', function () {
+    return redirect('/main');
+});
+Route::get('/main', 'MainController@index');
 Route::get('/about', 'AboutController@index');

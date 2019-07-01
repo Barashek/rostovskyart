@@ -1,3 +1,8 @@
+body {
+    background-image: url("http://rostovskyart/img/bg.png");
+    font: 18px/24px Courier New, Arial, sans-serif;
+}
+
 #navbar {
     margin: 0;
     position: fixed;
@@ -5,11 +10,12 @@
     left: 0;
     width: 100%;
     z-index: 1;
-    background-image: url("http://rostovskyart/img/фон.png");
+    background-image: url("http://rostovskyart/img/bg-navbar.png");
 }
 
 #nav-logo {
-    width: 100%;
+    width: 90%;
+    margin: 0 5%;
 }
 
 .nav-link {
@@ -19,14 +25,19 @@
     font: 18px/24px Arial, sans-serif;
 }
 
+#navbar a:focus {
+    outline-color: #8A2908;
+}
+
 .nav-link:hover {
     color: #8a2908;
     text-decoration: none;
 }
 
-#content {
-    margin: 5% 0 0 0;
-}
+
+/* #content {
+    margin: 5% -15px 0 -15px;
+} */
 
 #footer {
     height: 200px;

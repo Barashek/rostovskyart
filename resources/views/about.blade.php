@@ -1,6 +1,8 @@
 @extends("template")
 @section("content")
 
+<link rel="stylesheet" href="css/about.css">
+
 <div class="row">
     <div class="col-lg-8">
         <p> Искусство как род священодействия, как вечный поиск красоты и истины -
@@ -28,6 +30,8 @@
             перемежается с миром материальным, рождая подлинную живописную поэзию - поэзию о красоте, вечности и любви.
         </p>
     </div>
+    <div class="col-lg-4"></div>
+
 </div>
 
 @endsection
