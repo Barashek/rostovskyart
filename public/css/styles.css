@@ -1,0 +1,33 @@
+#navbar {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-image: url("http://rostovskyart/img/фон.png");
+}
+
+#nav-logo {
+    width: 100%;
+}
+
+.nav-link {
+    display: inline;
+    color: #8A2908;
+    text-decoration: underline;
+    font: 18px/24px Arial, sans-serif;
+}
+
+.nav-link:hover {
+    color: #8a2908;
+    text-decoration: none;
+}
+
+#content {
+    margin: 5% 0 0 0;
+}
+
+#footer {
+    height: 200px;
+}
