@@ -1,4 +1,10 @@
 @extends("template")
+@extends("template")
+
+@section("title")
+О художниках | Династия художников Ростовских
+@endsection
+
 @section("content")
 
 <link rel="stylesheet" href="css/about.css">
@@ -30,8 +36,22 @@
             перемежается с миром материальным, рождая подлинную живописную поэзию - поэзию о красоте, вечности и любви.
         </p>
     </div>
-    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <img style="width:100%;" src="img/IMG-20181111-WA0017.jpg">
+    </div>
 
+</div>
+
+<div class="row d-flex align-items-center" id="about-img-row">
+    <div class="col-lg-4">
+        <img src="img/IMG-20181111-WA0033.jpg">
+    </div>
+    <div class="col-lg-4">
+        <img src="img/IMG-20181111-WA0031.jpg">
+    </div>
+    <div class="col-lg-4">
+        <img src="img/IMG-20181111-WA0036.jpg">
+    </div>
 </div>
 
 @endsection

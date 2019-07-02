@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+.paint {
+    object-fit: contain;
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+}
+
+.paint:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

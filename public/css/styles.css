@@ -3,6 +3,10 @@ body {
     font: 18px/24px Courier New, Arial, sans-serif;
 }
 
+.row {
+    margin: 0;
+}
+
 #navbar {
     margin: 0;
     position: fixed;
@@ -34,11 +38,10 @@ body {
     text-decoration: none;
 }
 
-
-/* #content {
-    margin: 5% -15px 0 -15px;
-} */
+#content {
+    margin: 4.5% 0 0 0;
+}
 
 #footer {
-    height: 200px;
+    height: 150px;
 }

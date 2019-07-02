@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 Route::get('/main', 'MainController@index');
 Route::get('/about', 'AboutController@index');
+Route::get('/biography', 'BiographyController@index');
+Route::get('/gallery', 'GalleryController@index');
+Route::get('/expositions', 'ExpositionsController@index');
+Route::get('/contacts', 'ContactsController@index');
