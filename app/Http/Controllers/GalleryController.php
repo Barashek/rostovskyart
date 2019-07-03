@@ -8,13 +8,16 @@ use App\Http\Controllers\Controller;
 
 class GalleryController extends Controller
 {
+
     public function index()
     {
         $artists = Artist::all();
-        $paintings = Painting::all();
+        $artist = Artist::where('id', '=', 1)->first();
+        $paintings = Painting::where('artist_id', '=', '1')->get();
         return view('gallery', [
             'paintings' => $paintings,
-            'artists' => $artists
+            'artists' => $artists,
+            'artist' => $artist
         ]);
     }
 }

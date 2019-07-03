@@ -8,23 +8,17 @@
 
 <link rel="stylesheet" href="css/gallery.css">
 
-<p>Картины художника 
-    <select name="artist">
-        @foreach($artists as $artist)
-            <option value="{{ $artist->id }}">{{ $artist->name }}</option>
-        @endforeach
-    </select>
-
-    @for($i = 0; $i < @count($paintings); $i=$i + 4) 
-        <div class="row d-flex align-items-center">
-        @for($j = $i; $j < ($i + 4); $j++)
-        <div class="col-lg-3">
-            @if(@isset($paintings[$j]))
-                <a href="img{{ $paintings[$j]->path }}"><img class="paint" src="img/{{ $paintings[$j]->path }}"></a>
-            @endif
-        </div>       
-        @endfor
+<p><div>Картины художника </div>
+    <div class="dropdown dropright" >
+        <button id="art-list" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">{{ $artist->name }}</button>
+        <div class="dropdown-menu" role="menu">
+            @foreach ($artists as $art) 
+                <a class="dropdown-item" role="presentation" id="{{ $art->id }}" onclick="galleryAjax(this.id)">{{ $art->name }}</a>
+            @endforeach
         </div>
-    @endfor
-
+    </div>
+</p>
+<div id="gallery">
+</div>
+    <script src="js/galleryAjax.js"></script>  
 @endsection

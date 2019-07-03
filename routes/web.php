@@ -20,3 +20,4 @@ Route::get('/biography', 'BiographyController@index');
 Route::get('/gallery', 'GalleryController@index');
 Route::get('/expositions', 'ExpositionsController@index');
 Route::get('/contacts', 'ContactsController@index');
+Route::get('/getgallery', 'AjaxController@index');

@@ -6,7 +6,7 @@ table {
     object-fit: contain;
     width: 100%;
     -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0px 0px 15px rgba(153, 114, 114, 0.8);
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
 }
 
@@ -14,4 +14,21 @@ table {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+
+#art-list {
+    border: none;
+    background: none;
+    color: black;
+    font: inherit;
+    padding: 5px;
+}
+
+#art-list:focus {
+    border: 1px solid#8A2908;
+    box-shadow: none;
+}
+
+p div {
+    display: inline;
 }
