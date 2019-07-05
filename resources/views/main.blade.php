@@ -7,6 +7,7 @@
     <title>Династия художников Ростовских</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/icon.png">
     <link rel="stylesheet" href="css/main.css">
 </head>
 

@@ -1,5 +1,4 @@
 @extends("template")
-@extends("template")
 
 @section("title")
 О художниках | Династия художников Ростовских
