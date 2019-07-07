@@ -1,7 +1,7 @@
 body {
     background-image: url("http://rostovskyart/img/bg.png");
     font: 18px/24px Times New Roman, sans-serif;
-    color: #444444;
+    color: #404040;
 }
 
 .row {
@@ -45,4 +45,8 @@ body {
 
 #footer {
     height: 150px;
+}
+
+.exposition {
+    margin: 0 0 0 10px;
 }

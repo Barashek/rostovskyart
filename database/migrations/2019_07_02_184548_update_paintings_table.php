@@ -28,7 +28,7 @@ class UpdatePaintingsTable extends Migration
     public function down()
     {
         Schema::table('paintings', function (Blueprint $table) {
-            $table->delete('artist_id');
+            $table->dropForeign('paintings_artist_id_foreign');
         });
     }
 }

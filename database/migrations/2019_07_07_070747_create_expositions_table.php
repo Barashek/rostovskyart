@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaintingsTable extends Migration
+class CreateExpositionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatePaintingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('paintings', function (Blueprint $table) {
+        Schema::create('expositions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('path');
-            $table->string('name');
-            $table->integer('year');
-            $table->string('description');
-            $table->string('size');
+            $table->string('year');
+            $table->string('place');
+            $table->string('href')->nullable(true);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreatePaintingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paintings');
+        Schema::dropIfExists('expositions');
     }
 }
