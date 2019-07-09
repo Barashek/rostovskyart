@@ -34,5 +34,4 @@
     </div>
 </div>
 <script src="js/galleryAjax.js"></script>
-<!-- <script src="js/lightboxInit.js"></script> -->
 @endsection
