@@ -11,10 +11,10 @@ class GalleryController extends Controller
 
     public function index()
     {
-        $artists = Artist::all();
+        // $artists = Artist::all();
         $artist = Artist::where('id', '=', 1)->first();
         return view('gallery', [
-            'artists' => $artists,
+            // 'artists' => $artists,
             'artist' => $artist
         ]);
     }
