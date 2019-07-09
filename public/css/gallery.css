@@ -77,8 +77,8 @@ p div {
     color: #fff;
 }
 
-#page-down img,
-#page-up img {
+#page-down,
+#page-up {
     width: 80%;
     opacity: 0.5;
     object-fit: contain;

@@ -1,17 +1,21 @@
+var page = 1;
+
 window.onload = function() {
+    page = 1;
     galleryAjax(null, 1);
 }
 
 function galleryAjax(event = null, id = null) {
     if (id == null)
         id = event.id;
-    var str = 'id=' + id;
-
+    var str = 'id=' + id + '&page=' + page;
+    alert(str);
     $.ajax({
         type: "GET",
         url: "/getgallery",
         data: str,
         success: function(data) {
+            alert('success');
             if (event != null)
                 $('#art-list-btn').text(event.innerText);
             $("#gallery").html('');
@@ -45,4 +49,12 @@ function galleryAjax(event = null, id = null) {
             }
         }
     });
+}
+
+function Pagination(event) {
+    if (event.id == 'page-up')
+        page--;
+    if (event.id == 'page-down')
+        pge++;
+
 }

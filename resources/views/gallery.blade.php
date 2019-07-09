@@ -18,16 +18,16 @@
     </div>
 </p>
 <div class="row">
-    <div class="col-lg-1 d-flex align-items-center" id="page-up">
-        {{-- <img src="img/left-btn.png"> --}}
+    <div class="col-lg-1 d-flex align-items-center">
+        <img id="page-up" src="img/left-btn.png" onclick="Pagination(this)">
     </div>
     <div class="col-lg-10">
         <div id="gallery">
 
         </div>
     </div>
-    <div class="col-lg-1 d-flex align-items-center" id="page-down">
-        {{-- <img src="img/right-btn.png"> --}}
+    <div class="col-lg-1 d-flex align-items-center">
+        <img  id="page-down" src="img/right-btn.png" onclick="Pagination(this)">
     </div>
 </div>
 <script src="js/galleryAjax.js"></script>

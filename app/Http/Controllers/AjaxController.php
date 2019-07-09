@@ -13,8 +13,38 @@ class AjaxController extends Controller
 
     public function index()
     {
-        $paintings = Painting::where('artist_id', '=', $_GET['id'])->get();
+        $nPainingsOnPage = 4;
+        if (isset($_GET['page']))
+            $page = $_GET['page'];
 
-        return response()->json(array('paintings' => $paintings), 200);
+        if (!isset($_POST['nPaintings'])) {
+            $nPaintings = Painting::count();
+            $_POST['nPaintings'] = $nPaintings;
+        } else {
+            $nPaintings = $_POST['nPaintings'];
+        }
+
+        $nPages = ceil($nPaintings / $nPainingsOnPage);
+
+        if ($page == 1) {
+            $isBegin = true;
+        } else {
+            $isBegin = false;
+            if ($page == $nPages) {
+                $isEnd = true;
+            } else {
+                $isEnd = false;
+            }
+        }
+
+        $begin = ($page - 1) * $nPainingsOnPage;
+
+        $paintings = Painting::where('artist_id', '=', $_GET['id'])->limit($begin, $nPainingsOnPage)->get();
+
+        return response()->json(array(
+            'paintings' => $paintings,
+            'isBegin' => $isBegin,
+            'isEnd' => $isEnd
+        ), 200);
     }
 }
