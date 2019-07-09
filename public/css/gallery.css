@@ -82,4 +82,5 @@ p div {
     width: 80%;
     opacity: 0.5;
     object-fit: contain;
+    display: none;
 }

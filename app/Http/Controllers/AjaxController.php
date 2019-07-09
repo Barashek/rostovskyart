@@ -18,7 +18,7 @@ class AjaxController extends Controller
             $page = $_GET['page'];
 
         if (!isset($_POST['nPaintings'])) {
-            $nPaintings = Painting::count();
+            $nPaintings = Painting::where('artist_id', '=', $_GET['id'])->count();
             $_POST['nPaintings'] = $nPaintings;
         } else {
             $nPaintings = $_POST['nPaintings'];
@@ -30,16 +30,17 @@ class AjaxController extends Controller
             $isBegin = true;
         } else {
             $isBegin = false;
-            if ($page == $nPages) {
-                $isEnd = true;
-            } else {
-                $isEnd = false;
-            }
         }
+        if ($page == $nPages) {
+            $isEnd = true;
+        } else {
+            $isEnd = false;
+        }
+
 
         $begin = ($page - 1) * $nPainingsOnPage;
 
-        $paintings = Painting::where('artist_id', '=', $_GET['id'])->limit($begin, $nPainingsOnPage)->get();
+        $paintings = Painting::where('artist_id', '=', $_GET['id'])->skip($begin)->take($nPainingsOnPage)->get();
 
         return response()->json(array(
             'paintings' => $paintings,
