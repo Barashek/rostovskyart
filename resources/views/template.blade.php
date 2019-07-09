@@ -13,8 +13,8 @@
 <body>
     <!-- -------- Navbar --------- -->
     <div class="row d-flex align-items-center" id="navbar">
-        <div class="col-lg-1 col-md-1"></div>
-        <div class="col-lg-2 col-md-5">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2">
             <a href="main">
                 <img src="img/лого.png" id="nav-logo">
             </a>
