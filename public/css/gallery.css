@@ -22,6 +22,10 @@
     background-color: #fff;
 }
 
+.test{
+    display: inline;
+}
+
 .paint-col:hover {
     background-color: #fff;
 }

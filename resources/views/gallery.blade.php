@@ -5,6 +5,9 @@
 
 @section("content")
 
+
+<link href="css/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/jquery.lightbox-0.5.pack.js"></script>
 <link rel="stylesheet" href="css/gallery.css">
 
 <p>
@@ -31,4 +34,5 @@
     </div>
 </div>
 <script src="js/galleryAjax.js"></script>
+<!-- <script src="js/lightboxInit.js"></script> -->
 @endsection

@@ -1,5 +1,6 @@
 window.onload = function() {
     galleryAjax(null, 1);
+    
 }
 
 function galleryAjax(event = null, id = null) {
@@ -23,7 +24,9 @@ function galleryAjax(event = null, id = null) {
                     var col = document.createElement('div');
                     if (data.paintings[j] != null) {
                         col.setAttribute('class', 'col-lg-3 paint-col');
-
+                        var a = document.createElement('a');
+                        a.setAttribute('href','img/' + data.paintings[j].path);
+                        a.setAttribute('class','test');
                         // var a = document.createElement('a');
                         // a.setAttribute('href', 'img/' + data.paintings[j].path);
                         var img = document.createElement('img');
@@ -36,13 +39,22 @@ function galleryAjax(event = null, id = null) {
                         var info = '<p>"' + data.paintings[j].name + '"</p><p style="float:left">' + data.paintings[j].description + '</p>' +
                             '<p style="float:right">' + data.paintings[j].year + '</p>';
                         div.innerHTML = info;
-                        col.appendChild(img);
+                        col.appendChild(a);
+                        a.appendChild(img);
+                        //col.appendChild(img);
                         col.appendChild(div);
                     }
                     row.appendChild(col);
                 }
                 $("#gallery").append(row);
+                $(".test").lightBox();
+                $(".test").append('<a></a>');
             }
         }
     });
 }
+
+
+// $(function(){
+// 	$(".test").lightBox();
+// });
