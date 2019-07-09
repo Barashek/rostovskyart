@@ -84,3 +84,8 @@ p div {
     object-fit: contain;
     display: none;
 }
+
+#page-down:hover,
+#page-up:hover {
+    opacity: 0.8;
+}

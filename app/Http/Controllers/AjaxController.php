@@ -31,7 +31,7 @@ class AjaxController extends Controller
         } else {
             $isBegin = false;
         }
-        if ($page == $nPages) {
+        if ($page == $nPages || $nPages == 0) {
             $isEnd = true;
         } else {
             $isEnd = false;
