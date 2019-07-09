@@ -48,5 +48,23 @@ body {
 }
 
 .exposition {
-    margin: 0 0 0 10px;
+    margin-bottom: 10px;
+}
+
+.exposition-img img:nth-child(even) {
+    float: left;
+}
+
+.exposition-img img:nth-child(odd) {
+    float: right;
+}
+
+.exposition-img img {
+    width: 70%;
+    margin-bottom: 40px;
+}
+
+figure {
+    display: block;
+    margin: 0;
 }
