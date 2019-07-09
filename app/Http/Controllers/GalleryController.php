@@ -14,7 +14,7 @@ class GalleryController extends Controller
         // $artists = Artist::all();
         $artist = Artist::where('id', '=', 1)->first();
         return view('gallery', [
-            'artists' => $artists,
+            // 'artists' => $artists,
             'artist' => $artist
         ]);
     }
