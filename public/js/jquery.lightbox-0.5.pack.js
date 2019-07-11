@@ -15,7 +15,7 @@
  * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
  * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
  */
-
+var currentScroll;
 // Offering a Custom Alias suport - More info: http://docs.jquery.com/Plugins/Authoring#Custom_Alias
 (function($) {
 	/**
@@ -147,6 +147,7 @@
                 top:	42,
 				left:	arrPageScroll[0]
             }).show();
+            currentScroll = document.body.scrollTop;
             window.scrollTo(0,0);
 			// Assigning click events in elements to close overlay
 			$('#jquery-overlay,#jquery-lightbox').click(function() {
@@ -398,6 +399,7 @@
 		 *
 		 */
 		function _finish() {
+            document.body.scrollTop = currentScroll;
 			$('#jquery-lightbox').remove();
 			$('#jquery-overlay').fadeOut(function() { $('#jquery-overlay').remove(); });
 			// Show some elements to avoid conflict with overlay in IE. These elements appear above the overlay.
