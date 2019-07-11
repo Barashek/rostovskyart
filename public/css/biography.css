@@ -5,3 +5,7 @@ p {
 .row {
     margin: 0 0 60px 0;
 }
+
+img {
+    width: 100%;
+}

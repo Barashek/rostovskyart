@@ -4,6 +4,54 @@ body {
     color: #404040;
 }
 
+#small-menu {
+    display: none;
+}
+
+#big-menu {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    #small-menu {
+        display: none;
+    }
+    #big-menu {
+        display: block;
+        width: 100%;
+    }
+    #nav-logo {
+        width: 90%;
+        margin: 0 5%;
+    }
+    #content {
+        margin-top: 4.5%;
+    }
+}
+
+@media screen and (max-width: 767.5px) {
+    #small-menu .dropdown-toggle::after {
+        content: none;
+    }
+    #small-menu {
+        display: block;
+    }
+    #small-menu button {
+        background-color: inherit;
+        border: none;
+    }
+    #big-menu {
+        display: none;
+    }
+    #nav-logo {
+        height: 40px;
+        object-fit: contain;
+    }
+    #content {
+        margin-top: 60px;
+    }
+}
+
 .row {
     margin: 0;
 }
@@ -16,11 +64,6 @@ body {
     width: 100%;
     z-index: 1;
     background-image: url("http://rostovskyart/img/bg-navbar.png");
-}
-
-#nav-logo {
-    width: 90%;
-    margin: 0 5%;
 }
 
 .nav-link {
@@ -37,10 +80,6 @@ body {
 .nav-link:hover {
     color: #8a2908;
     text-decoration: none;
-}
-
-#content {
-    margin: 4.5% 0 0 0;
 }
 
 #footer {
