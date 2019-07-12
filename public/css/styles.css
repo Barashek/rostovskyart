@@ -1,6 +1,6 @@
 body {
     background-image: url("http://rostovskyart/img/bg.png");
-    font: 18px/24px Times New Roman, sans-serif;
+    font: 18px Times New Roman, sans-serif;
     color: #404040;
 }
 
@@ -12,6 +12,14 @@ body {
     display: none;
 }
 
+#content {
+    max-width: 1400px;
+}
+
+.row {
+    margin: 0;
+}
+
 @media only screen and (min-width: 768px) {
     #small-menu {
         display: none;
@@ -21,11 +29,12 @@ body {
         width: 100%;
     }
     #nav-logo {
-        width: 90%;
-        margin: 0 5%;
+        width: 80%;
+        object-fit: contain;
+        margin: 0 10%;
     }
     #content {
-        margin-top: 4.5%;
+        margin-top: 5.5%;
     }
 }
 
@@ -37,8 +46,18 @@ body {
         display: block;
     }
     #small-menu button {
+        padding: 0;
         background-color: inherit;
         border: none;
+    }
+    #small-menu button:active {
+        outline: none;
+        box-shadow: none;
+    }
+    #small-menu button:focus {
+        outline: none;
+        box-shadow: none;
+        border: 1px solid #8A2908;
     }
     #big-menu {
         display: none;
@@ -50,10 +69,6 @@ body {
     #content {
         margin-top: 60px;
     }
-}
-
-.row {
-    margin: 0;
 }
 
 #navbar {
@@ -82,6 +97,46 @@ body {
     text-decoration: none;
 }
 
+@media (max-width:1336.5px) {
+    .nav-link,
+    #content {
+        font-size: 14px;
+    }
+    h2 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width:882px) {
+    .nav-link,
+    #content {
+        font-size: 13px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width:844px) {
+    .nav-link,
+    #content {
+        font-size: 12px;
+    }
+    h2 {
+        font-size: 23px;
+    }
+}
+
+@media (max-width:804px) {
+    .nav-link,
+    #content {
+        font-size: 11px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+}
+
 #footer {
     height: 150px;
 }
@@ -90,20 +145,23 @@ body {
     margin-bottom: 10px;
 }
 
-.exposition-img img:nth-child(even) {
-    float: left;
+@media(min-width: 768px) {
+    .float-img img:nth-child(even) {
+        float: left;
+    }
+    .float-img img:nth-child(odd) {
+        float: right;
+    }
+    .float-img img {
+        width: 70%;
+        margin: 20px 0;
+    }
 }
 
-.exposition-img img:nth-child(odd) {
-    float: right;
-}
-
-.exposition-img img {
-    width: 70%;
-    margin-bottom: 40px;
-}
-
-figure {
-    display: block;
-    margin: 0;
+@media (max-width:767.5px) {
+    .float-img img {
+        width: 100%;
+        margin: 10px;
+        float: none;
+    }
 }

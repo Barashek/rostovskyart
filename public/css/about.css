@@ -4,18 +4,16 @@ p {
     text-indent: 1.5em;
 }
 
-.left {
-    float: left;
-    width: 60%;
-    margin: 15px 0;
-}
-
-.right {
-    float: right;
-    width: 60%;
-    margin: 15px 0;
-}
-
 #about-img-row img {
     width: 100%;
+}
+
+@media (max-width: 767.5px) {
+    .float-img img {
+        width: 45%;
+        margin: 5px;
+    }
+    #about-img-row img {
+        margin: 10px;
+    }
 }

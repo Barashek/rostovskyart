@@ -1,7 +1,7 @@
 @extends('navbar')
 @section('container')
 
-    <div class="row">
+    <div class="row d-flex justify-content-around">
         <div class="col-lg-1"></div>
         <div class="col-lg-10" id="content">
             @yield("content")

@@ -13,7 +13,8 @@ class AjaxController extends Controller
 
     public function index()
     {
-        $nPainingsOnPage = 4;
+        if (isset($_GET['onPage']))
+            $nPainingsOnPage = $_GET['onPage'];
         if (isset($_GET['page']))
             $page = $_GET['page'];
 

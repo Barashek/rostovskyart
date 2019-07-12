@@ -7,10 +7,28 @@ window.onload = function() {
 }
 
 function galleryAjax(event = null) {
+    var devType = deviceType();
+    var isMobile, colsInRow, onPage;
+
+    if (devType == "Mobile" || devType == "Tablet") {
+        isMobile = true;
+    } else {
+        isMobile = false;
+    }
+
+    if (window.matchMedia('(max-width: 991px)')) {
+        colsInRow = 6;
+        onPage = 6;
+    } else {
+        colsInRow = 4;
+        onPage = 8;
+    }
+
     if (event != null) {
+        page = 1;
         id = event.id;
     }
-    var str = 'id=' + id + '&page=' + page;
+    var str = 'id=' + id + '&page=' + page + "&onPage=" + onPage;
     $.ajax({
         type: "GET",
         url: "/getgallery",
@@ -20,19 +38,22 @@ function galleryAjax(event = null) {
                 $('#art-list-btn').text(event.innerText);
             $("#gallery").html('');
             var n = data.paintings.length;
-            for (var i = 0; i < n; i = i + 4) {
+            for (var i = 0; i < n; i = i + colsInRow) {
                 var row = document.createElement('div');
                 row.setAttribute('class', 'row d-flex align-items-center');
-                for (j = i; j < (i + 4); j++) {
+                for (j = i; j < (i + colsInRow); j++) {
                     var col = document.createElement('div');
                     if (data.paintings[j] != null) {
-                        col.setAttribute('class', 'col-lg-3 paint-col');
+                        col.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6 paint-col');
                         var img = document.createElement('img');
                         img.setAttribute('class', 'paint');
                         img.setAttribute('src', 'img/' + data.paintings[j].path);
                         img.setAttribute('alt', data.paintings[j].name);
                         var div = document.createElement('div');
-                        div.setAttribute('class', 'info');
+                        if (isMobile)
+                            div.setAttribute('class', 'info-mobile');
+                        else
+                            div.setAttribute('class', 'info');
                         var info = '<p>"' + data.paintings[j].name + '"</p><p style="float:left">' + data.paintings[j].description + '</p>' +
                             '<p style="float:right">' + data.paintings[j].year + '</p>';
                         div.innerHTML = info;
@@ -43,24 +64,50 @@ function galleryAjax(event = null) {
                 }
                 $("#gallery").append(row);
             }
-            if (data.isBegin) {
-                $('#page-up').css('display', 'none');
+            if (window.matchMedia('(min-width: 992px)').matches) {
+                if (data.isBegin) {
+                    $('#page-up').css('display', 'none');
+                } else {
+                    $('#page-up').css('display', 'block');
+                }
+                if (data.isEnd) {
+                    $('#page-down').css('display', 'none');
+                } else {
+                    $('#page-down').css('display', 'block');
+                }
             } else {
-                $('#page-up').css('display', 'block');
-            }
-            if (data.isEnd) {
-                $('#page-down').css('display', 'none');
-            } else {
-                $('#page-down').css('display', 'block');
+                var links = document.createElement('div');
+                links.setAttribute('class', 'row');
+                var col1 = document.createElement('div');
+                col1.setAttribute('class', 'col');
+                col1.style.textAlign = 'left';
+                var col2 = document.createElement('div');
+                col2.setAttribute('class', 'col');
+                col2.style.textAlign = 'right';
+                if (!data.isBegin) {
+                    col1.innerHTML = '<a id="mobile-page-up" onclick="Pagination(this)">Назад</a>';
+                }
+                links.appendChild(col1);
+                if (!data.isEnd) {
+                    col2.innerHTML = '<a id="mobile-page-down" onclick="Pagination(this)">Вперед</a>';
+                }
+                links.appendChild(col2);
+                document.getElementById('gallery').appendChild(links);
             }
         }
     });
 }
 
 function Pagination(event) {
-    if (event.id == 'page-up')
+    if (event.id == 'page-up' || event.id == 'mobile-page-up')
         page--;
-    if (event.id == 'page-down')
+    if (event.id == 'page-down' || event.id == 'mobile-page-down')
         page++;
     galleryAjax();
+}
+
+function deviceType() {
+    var user = detect.parse(navigator.userAgent);
+    var deviceType = user.device.type;
+    return deviceType
 }

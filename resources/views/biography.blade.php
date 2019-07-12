@@ -1,12 +1,15 @@
-@extends("template") @section("title") Биографии | Династия художников Ростовских @endsection @section("content")
+@extends("template") @section("title") Биографии | Династия художников Ростовских @endsection 
+
+
+@section("content")
 
 <link rel="stylesheet" href="css/biography.css">
 
-<div class="row">
-    <div class="col-lg-4 d-flex align-items-center">
-        <img src="img/Ростовский В.К.jpg" alt="Ростовский В.К.">
+<div class="row biography">
+    <div class="col-lg-4 col-md-4 d-flex align-items-center">
+        <img class="photo" src="img/Ростовский В.К.jpg" alt="Ростовский В.К.">
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 col-md-8">
         <h2>Валерий Константинович Ростовский</h2>
         <br/>
         <p>Родился в 1947году. </p>
@@ -21,12 +24,12 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-4 d-flex align-items-center">
-        <img src="img/Ростовский К.В.jpg" alt="Ростовский В.К.">
+<div class="row biography">
+    <div class="col-lg-4 col-md-4 d-flex align-items-center">
+        <img class="photo" src="img/Ростовский К.В.jpg" alt="Ростовский В.К.">
     </div>
 
-    <div class="col-lg-8">
+    <div class="col-lg-8 col-md-8">
         <h2>Ростовский Константин Валериевич</h2>
         <br/>
         <p>Родился в 1972году. </p>
@@ -41,11 +44,11 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-4 d-flex align-items-center">
-        <img src="img/Ростовский В.В.jpg" alt="Ростовский В.В.">
+<div class="row biography">
+    <div class="col-lg-4 col-md-4 d-flex align-items-center">
+        <img class="photo" src="img/Ростовский В.В.jpg" alt="Ростовский В.В.">
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 col-md-8">
         <h2>Ростовский Валерий Валериевич</h2>
         <br/>
         <p>Родился в 1977году. </p>

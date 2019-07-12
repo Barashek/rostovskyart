@@ -1,11 +1,24 @@
 p {
-    margin: 0 0 0 8px;
+    margin-left: 8px;
 }
 
-.row {
-    margin: 0 0 60px 0;
+.biography {
+    margin-bottom: 60px;
 }
 
-img {
+.photo {
     width: 100%;
+    margin: 10px;
+}
+
+@media (max-width: 767.5px) {
+    .photo {
+        width: 215px;
+    }
+    p {
+        margin-bottom: 7px;
+    }
+    .biography {
+        margin-bottom: 30px;
+    }
 }
