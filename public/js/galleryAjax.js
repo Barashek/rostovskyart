@@ -16,10 +16,11 @@ function galleryAjax(event = null) {
         isMobile = false;
     }
 
-    if (window.matchMedia('(max-width: 991px)')) {
+    if (window.matchMedia('(max-width: 991.5px)').matches) {
         colsInRow = 6;
         onPage = 6;
-    } else {
+    }
+    if (window.matchMedia('(min-width: 992px').matches) {
         colsInRow = 4;
         onPage = 8;
     }
