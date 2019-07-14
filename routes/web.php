@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/main');
+Route::get('/main', function () {
+    return redirect('/');
 });
-Route::get('/main', 'MainController@index');
+Route::get('/', 'MainController@index');
 Route::get('/about', 'AboutController@index');
 Route::get('/biography', 'BiographyController@index');
 Route::get('/gallery', 'GalleryController@index');
