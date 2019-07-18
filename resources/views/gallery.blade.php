@@ -5,9 +5,11 @@
 
 @section("content")
 
-<link href="css/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/lightbox.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/gallery.css">
-<script type="text/javascript" src="js/jquery.lightbox-0.5.pack.js"></script>
+<script type="text/javascript" src="js/lightbox.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.lightbox-0.5.pack.js"></script> -->
 
 <p>
     <div>КАРТИНЫ ХУДОЖНИКА </div>

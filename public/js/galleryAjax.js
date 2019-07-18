@@ -48,6 +48,7 @@ function galleryAjax(event = null) {
                         col.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6 paint-col');
                         var a = document.createElement('a');
                         a.setAttribute('href', 'img/' + data.paintings[j].path);
+                        a.setAttribute('data-lightbox', 'grp');
                         a.setAttribute('class', 'mod');
                         var img = document.createElement('img');
                         img.setAttribute('class', 'paint');
@@ -68,7 +69,12 @@ function galleryAjax(event = null) {
                     row.appendChild(col);
                 }
                 $("#gallery").append(row);
-                $(".mod").lightBox();
+                // lightbox.option(
+                //     {
+                //         'fitImagesInViewport': true
+                //     }
+                // );
+                //$(".mod").lightBox();
 
             }
             if (window.matchMedia('(min-width: 992px)').matches) {
