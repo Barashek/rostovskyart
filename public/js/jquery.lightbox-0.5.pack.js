@@ -1,4 +1,8 @@
 /**
+ * 
+ * РАЗМЕР УВЕЛИЧЕННОГО ИЗОБРАЖЕНИЯ
+ * ПЕРЕМЕННАЯ pixCount
+ * 
  * jQuery lightBox plugin
  * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
  * and adapted to me for use like a plugin from jQuery.
@@ -11,7 +15,7 @@
  * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
  * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
  */
-
+var currentScroll;
 // Offering a Custom Alias suport - More info: http://docs.jquery.com/Plugins/Authoring#Custom_Alias
 (function($) {
 	/**
@@ -36,8 +40,8 @@
 			containerBorderSize:	10,			// (integer) If you adjust the padding in the CSS for the container, #lightbox-container-image-box, you will need to update this value
 			containerResizeSpeed:	400,		// (integer) Specify the resize duration of container image. These number are miliseconds. 400 is default.
 			// Configuration related to texts in caption. For example: Image 2 of 8. You can alter either "Image" and "of" texts.
-			txtImage:				'Image',	// (string) Specify text "Image"
-			txtOf:					'of',		// (string) Specify text "of"
+			txtImage:				'Картина',	// (string) Specify text "Image"
+			txtOf:					'из',		// (string) Specify text "of"
 			// Configuration related to keyboard navigation
 			keyToClose:				'c',		// (string) (c = close) Letter to close the jQuery lightBox interface. Beyond this letter, the letter X and the SCAPE key is used to.
 			keyToPrev:				'p',		// (string) (p = previous) Letter to show the previous image
@@ -137,11 +141,14 @@
 			}).fadeIn();
 			// Get page scroll
 			var arrPageScroll = ___getPageScroll();
-			// Calculate top and left offset for the jquery-lightbox div object and show it
+            // Calculate top and left offset for the jquery-lightbox div object and show it
 			$('#jquery-lightbox').css({
-				top:	arrPageScroll[1] + (arrPageSizes[3] / 10),
+                //top:	arrPageScroll[1] + (arrPageSizes[3] / 10),
+                top:	42,
 				left:	arrPageScroll[0]
-			}).show();
+            }).show();
+            currentScroll = document.body.scrollTop;
+            window.scrollTo(0,0);
 			// Assigning click events in elements to close overlay
 			$('#jquery-overlay,#jquery-lightbox').click(function() {
 				_finish();									
@@ -202,7 +209,15 @@
 		function _resize_container_image_box(intImageWidth,intImageHeight) {
 			// Get current width and height
 			var intCurrentWidth = $('#lightbox-container-image-box').width();
-			var intCurrentHeight = $('#lightbox-container-image-box').height();
+            var intCurrentHeight = $('#lightbox-container-image-box').height();
+            var pixCount = 600;
+            if(intImageWidth > pixCount ) {
+                intImageHeight = (intImageHeight/intImageWidth)*pixCount;
+                intImageWidth = pixCount;
+                $('#lightbox-image').css({ width: pixCount });
+                var intCurrentWidth = pixCount;
+        }
+            
 			// Get the width and height of the selected image plus the padding
 			var intWidth = (intImageWidth + (settings.containerBorderSize * 2)); // Plus the image´s width and the left and right padding value
 			var intHeight = (intImageHeight + (settings.containerBorderSize * 2)); // Plus the image´s height and the left and right padding value
@@ -384,6 +399,7 @@
 		 *
 		 */
 		function _finish() {
+            document.body.scrollTop = currentScroll;
 			$('#jquery-lightbox').remove();
 			$('#jquery-overlay').fadeOut(function() { $('#jquery-overlay').remove(); });
 			// Show some elements to avoid conflict with overlay in IE. These elements appear above the overlay.
@@ -427,7 +443,10 @@
 				pageHeight = windowHeight;
 			} else { 
 				pageHeight = yScroll;
-			}
+            }
+            
+            //pageHeight = 700;
+
 			// for small pages with total width less then width of the viewport
 			if(xScroll < windowWidth){	
 				pageWidth = xScroll;		
