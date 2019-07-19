@@ -1,7 +1,7 @@
 var page = 1;
 var id = 1;
 
-window.onload = function() {
+window.onload = function () {
     page = 1;
     galleryAjax();
 }
@@ -34,7 +34,7 @@ function galleryAjax(event = null) {
         type: "GET",
         url: "/getgallery",
         data: str,
-        success: function(data) {
+        success: function (data) {
             if (event != null)
                 $('#art-list-btn').text(event.innerText);
             $("#gallery").html('');
@@ -46,6 +46,10 @@ function galleryAjax(event = null) {
                     var col = document.createElement('div');
                     if (data.paintings[j] != null) {
                         col.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6 paint-col');
+                        var a = document.createElement('a');
+                        a.setAttribute('href', 'img/' + data.paintings[j].path);
+                        a.setAttribute('data-lightbox', 'grp');
+                        a.setAttribute('class', 'mod');
                         var img = document.createElement('img');
                         img.setAttribute('class', 'paint');
                         img.setAttribute('src', 'img/' + data.paintings[j].path);
@@ -58,12 +62,20 @@ function galleryAjax(event = null) {
                         var info = '<p>"' + data.paintings[j].name + '"</p><p style="float:left">' + data.paintings[j].description + '</p>' +
                             '<p style="float:right">' + data.paintings[j].year + '</p>';
                         div.innerHTML = info;
-                        col.appendChild(img);
+                        col.appendChild(a);
+                        a.appendChild(img);
                         col.appendChild(div);
                     }
                     row.appendChild(col);
                 }
                 $("#gallery").append(row);
+                // lightbox.option(
+                //     {
+                //         'fitImagesInViewport': true
+                //     }
+                // );
+                //$(".mod").lightBox();
+
             }
             if (window.matchMedia('(min-width: 992px)').matches) {
                 if (data.isBegin) {
@@ -95,6 +107,7 @@ function galleryAjax(event = null) {
                 links.appendChild(col2);
                 document.getElementById('gallery').appendChild(links);
             }
+
         }
     });
 }

@@ -1,11 +1,15 @@
-@extends("template") 
-@section("title") 
-    Галерея | Династия художников Ростовских 
-@endsection 
+@extends("template")
+@section("title")
+Галерея | Династия художников Ростовских
+@endsection
 
 @section("content")
 
+<!-- <link href="css/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/lightbox.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/gallery.css">
+<script type="text/javascript" src="js/lightbox.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.lightbox-0.5.pack.js"></script> -->
 
 <p>
     <div>КАРТИНЫ ХУДОЖНИКА </div>
@@ -27,7 +31,7 @@
         </div>
     </div>
     <div class="col-lg-1 d-flex align-items-center">
-        <img  id="page-down" src="img/right-btn.png" onclick="Pagination(this)">
+        <img id="page-down" src="img/right-btn.png" onclick="Pagination(this)">
     </div>
 </div>
 <script src="js/galleryAjax.js"></script>
