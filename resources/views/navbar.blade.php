@@ -21,7 +21,7 @@
             <div class="row d-flex align-items-center">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-6" style="text-align: left">
                     <a href="main">
-                        <img src="img/лого.png" id="nav-logo">
+                        <img src="img/logo.png" id="nav-logo">
                     </a>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-6 col-6" style="text-align: right">
