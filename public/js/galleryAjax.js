@@ -52,6 +52,7 @@ function galleryAjax(event = null) {
                             var a = document.createElement('a');
                             a.setAttribute('href', 'img/' + data.paintings[j].path);
                             a.setAttribute('data-lightbox', 'grp');
+                            a.setAttribute('data-title', '"' + data.paintings[j].name + '" ' + data.paintings[j].description + ", " + data.paintings[j].year);
                             a.setAttribute('class', 'mod');
                             var img = document.createElement('img');
                             img.setAttribute('class', 'paint');
