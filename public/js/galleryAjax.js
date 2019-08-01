@@ -1,5 +1,6 @@
 var page = 1;
 var id = 1;
+var animationSpeed = 300;
 
 window.onload = function () {
     page = 1;
@@ -30,7 +31,6 @@ function galleryAjax(event = null) {
         id = event.id;
     }
     var str = 'id=' + id + '&page=' + page + "&onPage=" + onPage;
-    var animationSpeed = 300;
     $.ajax({
         type: "GET",
         url: "/getgallery",
@@ -111,11 +111,13 @@ function galleryAjax(event = null) {
 }
 
 function Pagination(event) {
-    if (event.id == 'page-up' || event.id == 'mobile-page-up')
-        page--;
-    if (event.id == 'page-down' || event.id == 'mobile-page-down')
-        page++;
-    galleryAjax();
+    $('#' + event.id).fadeOut(animationSpeed, function () {
+        if (event.id == 'page-up' || event.id == 'mobile-page-up')
+            page--;
+        if (event.id == 'page-down' || event.id == 'mobile-page-down')
+            page++;
+        galleryAjax();
+    });
 }
 
 function deviceType() {
