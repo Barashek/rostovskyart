@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/about.css">
 
 <div class="row">
-    <div class="col-lg-9 col-md-8">
+    <div class="col-lg-9 col-md-8" id="text">
         <p> Искусство как род священодействия, как вечный поиск красоты и истины - так можно описать значение живописи в жизни признанных художников Валерия Ростовского-старшего, Константина Ростовского, Валерия Ростовского-младшего.
         </p>
         <p>
@@ -48,4 +48,5 @@
     </div>
 </div>
 
+<script src="js/float.js"></script>
 @endsection

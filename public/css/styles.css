@@ -141,6 +141,10 @@ body {
     margin-bottom: 10px;
 }
 
+.float-img {
+    display: none;
+}
+
 @media(min-width: 768px) {
     .float-img img:nth-child(even) {
         float: left;
@@ -149,7 +153,7 @@ body {
         float: right;
     }
     .float-img img {
-        width: 70%;
+        /* width: 70%; */
         margin: 20px 0;
     }
 }
