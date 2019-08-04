@@ -1,14 +1,24 @@
 var page = 1;
 var id = 1;
 var animationSpeed = 300;
+var isResized = false;
 
-window.onload = function() {
+window.onload = function () {
     page = 1;
     galleryAjax();
 }
 
-window.onresize = function() {
-    galleryAjax();
+window.onresize = function () {
+    if ($('.paint').length == 8 && window.matchMedia('(max-width: 991.5px)').matches) {
+        colsInRow = 6;
+        onPage = 6;
+        galleryAjax();
+    }
+    else if ($('.paint').length == 6 && !window.matchMedia('(max-width: 991.5px)').matches) {
+        colsInRow = 4;
+        onPage = 8;
+        galleryAjax();
+    }
 }
 
 function galleryAjax(event = null) {
@@ -21,14 +31,20 @@ function galleryAjax(event = null) {
         isMobile = false;
     }
 
-    if (window.matchMedia('(max-width: 991.5px)').matches) {
-        colsInRow = 6;
-        onPage = 6;
-    }
-    if (window.matchMedia('(min-width: 992px').matches) {
-        colsInRow = 4;
-        onPage = 8;
-    }
+    if (!isResized)
+        if (window.matchMedia('(max-width: 991.5px)').matches) {
+            colsInRow = 6;
+            onPage = 6;
+        }
+        else {
+            colsInRow = 4;
+            onPage = 8;
+        }
+    isResized = false;
+    // if (window.matchMedia('(min-width: 992px').matches) {
+    //     colsInRow = 4;
+    //     onPage = 8;
+    // }
 
     if (event != null) {
         page = 1;
@@ -40,10 +56,10 @@ function galleryAjax(event = null) {
         url: "/getgallery",
         data: str,
 
-        success: function(data) {
+        success: function (data) {
             if (event != null)
                 $('#art-list-btn').text(event.innerText);
-            $("#gallery").fadeOut(animationSpeed, function() {
+            $("#gallery").fadeOut(animationSpeed, function () {
                 $("#gallery").html('');
                 var n = data.paintings.length;
                 for (var i = 0; i < n; i = i + colsInRow) {
@@ -78,7 +94,7 @@ function galleryAjax(event = null) {
                     }
                     $("#gallery").append(row);
                 }
-                $("#gallery").fadeIn(animationSpeed, function() {
+                $("#gallery").fadeIn(animationSpeed, function () {
                     if (window.matchMedia('(min-width: 992px)').matches) {
                         if (data.isBegin) {
                             $('#page-up').css('display', 'none');
@@ -116,7 +132,7 @@ function galleryAjax(event = null) {
 }
 
 function Pagination(event) {
-    $('#' + event.id).fadeOut(animationSpeed, function() {
+    $('#' + event.id).fadeOut(animationSpeed, function () {
         if (event.id == 'page-up' || event.id == 'mobile-page-up')
             page--;
         if (event.id == 'page-down' || event.id == 'mobile-page-down')
