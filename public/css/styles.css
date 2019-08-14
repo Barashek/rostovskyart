@@ -93,8 +93,8 @@ body {
 }
 
 .nav-link:hover {
-    color: #8a2908;
-    text-decoration: none;
+    color: #ffffff;
+    background-color:rgb(150, 98, 81);
 }
 
 @media (max-width:1336.5px) {

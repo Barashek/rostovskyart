@@ -1,7 +1,7 @@
 @extends('navbar')
 @section("title")
 Династия художников Ростовских
-@endsection 
+@endsection
 
 @section('container')
 
@@ -9,13 +9,10 @@
 
 <div id="main">
     <div id="bg">
-        <img src="img/bg-main.jpg">
     </div>
     <div id="logo">
         <img src="img/logo.png">
-    </div>  
+    </div>
 </div>
-
-<script src="js/main.js"></script>
 
 @endsection

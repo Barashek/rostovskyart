@@ -66,8 +66,9 @@ p div {
 }
 
 #art-list a:hover {
-    background-color: inherit;
     border: 1px solid #8A2908;
+    color: #ffffff;
+    background-color:rgb(150, 98, 81);
 }
 
 #art-list a:active {
