@@ -9,20 +9,27 @@ window.onload = function () {
     galleryAjax();
 }
 
-window.onresize = function () {
-    if ($('.paint').length == 8 && window.matchMedia('(max-width: 991.5px)').matches) {
-        isResized = true;
-        colsInRow = 6;
-        onPage = 6;
-        galleryAjax();
-    }
-    else if ($('.paint').length == 6 && !window.matchMedia('(max-width: 991.5px)').matches) {
-        isResized = true;
-        colsInRow = 4;
-        onPage = 8;
-        galleryAjax();
-    }
-}
+window.onresize = _.debounce(
+    function () {
+        console.log('');
+        console.log(window.innerWidth);
+        // if ($('.paint').length == 8 && window.matchMedia('(max-width: 991.5px)').matches) {
+        if ($('.paint').length == 8 && window.innerWidth < 992) {
+            console.log('ресайз 8->6');
+            isResized = true;
+            colsInRow = 6;
+            onPage = 6;
+            galleryAjax();
+        }
+        // else if ($('.paint').length == 6 && !window.matchMedia('(max-width: 991.5px)').matches) {
+        else if ($('.paint').length == 6 && window.innerWidth > 992) {
+            console.log('ресайз 6->8');
+            isResized = true;
+            colsInRow = 4;
+            onPage = 8;
+            galleryAjax();
+        }
+    }, 2, false);
 
 function galleryAjax(event = null) {
     var devType = deviceType();
