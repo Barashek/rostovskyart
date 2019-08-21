@@ -8,6 +8,7 @@
 <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/gallery.css">
 <script type="text/javascript" src="js/lightbox.js"></script>
+<script type="text/javascript" src="js/underscore.js"></script>
 
 <p>
     <div>КАРТИНЫ ХУДОЖНИКА </div>
