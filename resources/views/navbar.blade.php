@@ -39,11 +39,11 @@
                             <img style="height: 40px; width: 40px" src="img/menu.png">
                         </button>
                         <div class="dropdown-menu" role="menu" id="art-list">
-                            <a class="dropdown-item nav-link" role="presentation" href="about">О художниках</a>
-                            <a class="dropdown-item nav-link" role="presentation" href="biography">Биографии</a>
-                            <a class="dropdown-item nav-link" role="presentation" href="gallery">Галерея</a>
-                            <a class="dropdown-item nav-link" role="presentation" href="expositions">Выставки</a>
-                            <a class="dropdown-item nav-link" role="presentation" href="contacts">Контакты</a>
+                            <li><a class="dropdown-item nav-link" role="presentation" href="about">О художниках</a></li>
+                            <li><a class="dropdown-item nav-link" role="presentation" href="biography">Биографии</a></li>
+                            <li><a class="dropdown-item nav-link" role="presentation" href="gallery">Галерея</a></li>
+                            <li><a class="dropdown-item nav-link" role="presentation" href="expositions">Выставки</a></li>
+                            <li><a class="dropdown-item nav-link" role="presentation" href="contacts">Контакты</a></li>
                         </div>
                     </div>
 

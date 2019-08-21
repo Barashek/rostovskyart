@@ -25,7 +25,7 @@
     </div>
     <div class="col-lg-10">
         <div id="gallery">
-
+            <!-- ------ здесь будут картины ------ -->
         </div>
     </div>
     <div class="col-lg-1 d-flex align-items-center">
