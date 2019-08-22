@@ -8,7 +8,6 @@
 <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/gallery.css">
 <script type="text/javascript" src="js/lightbox.js"></script>
-<script type="text/javascript" src="js/underscore.js"></script>
 
 <p>
     <div>КАРТИНЫ ХУДОЖНИКА </div>
@@ -21,17 +20,17 @@
     </div>
 </p>
 <div class="row">
-    <div class="col-lg-1 d-flex align-items-center">
+    <div class="col-1 d-flex align-items-center">
         <img id="page-up" src="img/left-btn.png" onclick="Pagination(this)">
     </div>
-    <div class="col-lg-10">
+    <div class="col-10">
         <div id="gallery">
             <!-- ------ здесь будут картины ------ -->
         </div>
     </div>
-    <div class="col-lg-1 d-flex align-items-center">
+    <div class="col-1 d-flex align-items-center">
         <img id="page-down" src="img/right-btn.png" onclick="Pagination(this)">
     </div>
 </div>
-<script src="js/galleryAjax.js"></script>
+<script src="js/test.js"></script>
 @endsection
