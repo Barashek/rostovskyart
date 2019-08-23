@@ -38,22 +38,24 @@ function galleryAjax(event = null) {
         url: "/getgallery",
         data: str,
 
-        success: function(data) {
+        success: function (data) {
             if (event != null)
                 $('#art-list-btn').text(event.innerText);
 
-            createPaints(data);
+            $("#gallery").fadeOut(animationSpeed, function () {
+                createPaints(data);
+            });
         }
     });
 }
 
-window.onload = function() {
+window.onload = function () {
     deviceType = deviceType();
     galleryAjax();
 }
 
 function Pagination(event) {
-    $('#' + event.id).fadeOut(animationSpeed, function() {
+    $('#' + event.id).fadeOut(animationSpeed, function () {
         if (event.id == 'page-up' || event.id == 'mobile-page-up')
             page--;
         if (event.id == 'page-down' || event.id == 'mobile-page-down')
@@ -105,7 +107,9 @@ function createPaints(data) {
         }
         $('#gallery').append(row);
     }
-    createUpDownArrows(data);
+    $("#gallery").fadeIn(animationSpeed, function () {
+        createUpDownArrows(data);
+    });
 }
 
 function createUpDownArrows(data) {
