@@ -93,8 +93,8 @@ body {
 }
 
 .nav-link:hover {
-    color: #ffffff;
-    background-color:rgb(150, 98, 81);
+    color: #8a2908;
+    text-decoration: none;
 }
 
 @media (max-width:1336.5px) {
@@ -141,7 +141,8 @@ body {
     margin-bottom: 10px;
 }
 
-.float-img {
+
+/* .float-img {
     display: none;
 }
 
@@ -154,14 +155,25 @@ body {
     }
     .float-img img {
         /* width: 70%; */
-        margin: 20px 0;
-    }
+
+
+/* margin: 20px 0;
+
 }
+
+}*/
 
 @media (max-width:767.5px) {
     .float-img img {
-        width: 100%;
-        margin: 10px;
-        float: none;
+        width: 30%;
+        margin-right: 2.5%;
+    }
+}
+
+@media(min-width:768px) {
+    .float-img img {
+        position: absolute;
+        max-height: 27%;
+        max-width: 100%;
     }
 }

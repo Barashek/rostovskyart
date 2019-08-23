@@ -28,9 +28,9 @@
         </p>
     </div>
     <div class="col-lg-3 col-md-4 d-flex align-items-center">
-        <div style="width:100%" class="float-img">
-            <img src="img/IMG-20181111-WA0020.jpg">
-            <img src="img/IMG-20181111-WA0017.jpg">
+        <div style="width:100%; height:100%; padding-left:10px" class="float-img">
+            <img src="img/IMG-20181111-WA0020.jpg" style="top:0; right:0">
+            <img src="img/IMG-20181111-WA0017.jpg" style="top:50%; left:0">
         </div>
     </div>
 
@@ -48,5 +48,5 @@
     </div>
 </div>
 
-<script src="js/float.js"></script>
+{{-- <script src="js/float.js"></script> --}}
 @endsection
