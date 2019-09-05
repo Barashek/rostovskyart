@@ -9,7 +9,11 @@
 <div class="row">
     <div class="col-lg-8 col-md-7" id="text">
         @foreach($expositions as $exp)
-            <p class="exposition">{{ $exp->year }} — {{ $exp->place }}</p>
+            @if($exp->href!=null)
+                <p class="exposition">{{ $exp->year }} — <a href={{$exp->href}}>{{ $exp->place }}</a></p>
+            @else
+                <p class="exposition">{{ $exp->year }} — {{ $exp->place }}</p>
+            @endif
         @endforeach
     </div>
     <div class="col-lg-4 col-md-5 d-flex align-items-center">

@@ -1,7 +1,7 @@
 var page = 1;
 var id = 1;
 
-var animationSpeed = 300;
+var animationSpeed = 250;
 var deviceType;
 
 var colsOnPage, colsInRow;
@@ -38,24 +38,24 @@ function galleryAjax(event = null) {
         url: "/getgallery",
         data: str,
 
-        success: function (data) {
+        success: function(data) {
             if (event != null)
                 $('#art-list-btn').text(event.innerText);
 
-            $("#gallery").fadeOut(animationSpeed, function () {
+            $("#gallery").fadeOut(animationSpeed, function() {
                 createPaints(data);
             });
         }
     });
 }
 
-window.onload = function () {
+window.onload = function() {
     deviceType = deviceType();
     galleryAjax();
 }
 
 function Pagination(event) {
-    $('#' + event.id).fadeOut(animationSpeed, function () {
+    $('#' + event.id).fadeOut(animationSpeed, function() {
         if (event.id == 'page-up' || event.id == 'mobile-page-up')
             page--;
         if (event.id == 'page-down' || event.id == 'mobile-page-down')
@@ -82,14 +82,14 @@ function createPaints(data) {
                     col.setAttribute('class', 'col-3 paint-col');
 
                 var a = document.createElement('a');
-                a.setAttribute('href', 'img/' + data.paintings[j].path);
+                a.setAttribute('href', 'img/' + data.paintings[j].artist_id + "/" + data.paintings[j].path);
                 a.setAttribute('data-lightbox', 'grp');
                 a.setAttribute('data-title', '"' + data.paintings[j].name + '" ' + data.paintings[j].description + ", " +
                     data.paintings[j].year);
                 a.setAttribute('class', 'mod');
                 var img = document.createElement('img');
                 img.setAttribute('class', 'paint');
-                img.setAttribute('src', 'img/' + data.paintings[j].path);
+                img.setAttribute('src', 'img/' + data.paintings[j].artist_id + "/" + data.paintings[j].path);
                 img.setAttribute('alt', data.paintings[j].name);
                 var div = document.createElement('div');
                 if (deviceType == 'Mobile' || deviceType == 'Tablet')
@@ -107,7 +107,7 @@ function createPaints(data) {
         }
         $('#gallery').append(row);
     }
-    $("#gallery").fadeIn(animationSpeed, function () {
+    $("#gallery").fadeIn(animationSpeed, function() {
         createUpDownArrows(data);
     });
 }
