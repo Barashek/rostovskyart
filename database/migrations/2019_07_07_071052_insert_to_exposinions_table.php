@@ -55,6 +55,11 @@ class InsertToExposinionsTable extends Migration
         ));
         DB::table('expositions')->insert(array(
             'year' => '2000',
+            'place' => 'Персональная выставка В.К.Ростовского на орбитальной станции МИР',
+            'href' => '\mir'
+        ));
+        DB::table('expositions')->insert(array(
+            'year' => '2000',
             'place' => 'Россия. Москва. «Бизнес-центр ТПП РФ».'
         ));
         DB::table('expositions')->insert(array(
