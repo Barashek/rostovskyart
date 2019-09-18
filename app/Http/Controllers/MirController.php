@@ -9,7 +9,7 @@ class MirController extends Controller
     public function index()
     {
         $imgs = array();
-        $path = 'img/Mir/';
+        // $path = 'img/Mir/';
 
         foreach (glob("img/Mir/*.jpg") as $filename) {
             $imgs[] = $filename;
@@ -21,8 +21,8 @@ class MirController extends Controller
         //     closedir($handle);
         // }
         return view('mir', [
-            'imgs' => $imgs,
-            'path' => $path
+            'imgs' => $imgs
+            // 'path' => $path
         ]);
     }
 }

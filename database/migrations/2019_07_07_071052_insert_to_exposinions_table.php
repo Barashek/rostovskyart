@@ -63,6 +63,11 @@ class InsertToExposinionsTable extends Migration
             'place' => 'Россия. Москва. «Бизнес-центр ТПП РФ».'
         ));
         DB::table('expositions')->insert(array(
+            'year' => '2002',
+            'place' => 'Персональная выставка В.К.Ростовского на Международной Космической Станции (МКС)',
+            'href' => '\iss'
+        ));
+        DB::table('expositions')->insert(array(
             'year' => '2003',
             'place' => 'Украина. Крым. «Ливадийский Дворец-музей».'
         ));
