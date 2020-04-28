@@ -35,8 +35,9 @@
                         </div>
                     </div>
                     <div id="small-menu" class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
-                            <img style="height: 40px; width: 40px" src="img/menu.png">
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button" style="color:#8a2908">
+                            Меню
+                            {{-- <img style="height: 40px; width: 40px" src="img/menu.png"> --}}
                         </button>
                         <div class="dropdown-menu" role="menu" id="art-list">
                             <li><a class="dropdown-item nav-link" role="presentation" href="about">О художниках</a></li>

@@ -8,6 +8,13 @@ class AboutController extends Controller
 {
     public function index()
     {
-        return view('about');
+        $imgs = array();
+
+        foreach (glob("img/about/*.jpg") as $filename) {
+            $imgs[] = $filename;
+        }
+        return view('about', [
+            'imgs' => $imgs
+        ]);
     }
 }

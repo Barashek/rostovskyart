@@ -6,6 +6,9 @@
 
 @section("content")
 
+<script type="text/javascript" src="js/lightbox.js"></script>
+<link href="css/lightbox.css" rel="stylesheet" type="text/css" />
+
 <div class="row">
     <div class="col-lg-8 col-md-7" id="text">
         @foreach($expositions as $exp)
@@ -18,9 +21,15 @@
     </div>
     <div class="col-lg-4 col-md-5 d-flex align-items-center">
         <div style="width:100%; height:100%; padding-left:10px" class="float-img">
-            <img src="img/Изображение 2.jpg" style="top:0; right:0">
-            <img src="img/Изображение 1.jpg" style="top:33%; left:0">
-            <img src="img/Изображение 3.jpg" style="top:67%;right:0">      
+            <a href="img/Изображение 2.jpg" data-lightbox="grp" class="mod">
+                <img src="img/Изображение 2.jpg" style="top:0; right:0">
+            </a>
+            <a href="img/Изображение 1.jpg" data-lightbox="grp" class="mod">
+                <img src="img/Изображение 1.jpg" style="top:33%; left:0">
+            </a>
+            <a href="img/Изображение 3.jpg" data-lightbox="grp" class="mod">
+                <img src="img/Изображение 3.jpg" style="top:67%;right:0">      
+            </a>
         </div>  
     </div>        
 </div>

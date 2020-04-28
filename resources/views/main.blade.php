@@ -11,7 +11,7 @@
     <div id="bg">
     </div>
     <div id="logo">
-        <img src="img/logo.png">
+        <img src="img/logo-test.png">
     </div>
 </div>
 

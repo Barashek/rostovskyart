@@ -32,5 +32,5 @@
         <img id="page-down" src="img/right-btn.png" onclick="Pagination(this)">
     </div>
 </div>
-<script src="js/test.js"></script>
+<script src="js/galleryAjax.js"></script>
 @endsection

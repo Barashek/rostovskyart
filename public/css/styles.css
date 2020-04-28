@@ -4,6 +4,16 @@ body {
     color: #404040;
 }
 
+#text a {
+    color: #8a2908;
+    text-decoration: underline;
+}
+
+#text a:hover {
+    color: #8a2908;
+    text-decoration: none;
+}
+
 #small-menu {
     display: none;
 }
@@ -39,9 +49,9 @@ body {
 }
 
 @media screen and (max-width: 767.5px) {
-    #small-menu .dropdown-toggle::after {
+    /* #small-menu .dropdown-toggle::after {
         content: none;
-    }
+    } */
     #small-menu div.dropdown-menu {
         width: 40vw;
         /* font-size: 14px; */
@@ -141,6 +151,8 @@ body {
 
 #footer {
     height: 150px;
+    width: 100%;
+    padding: 10px;
 }
 
 .exposition {
@@ -149,8 +161,8 @@ body {
 
 @media (max-width:767.5px) {
     .float-img img {
-        width: 30%;
-        margin-right: 2.5%;
+        width: 100%;
+        margin: 10px 0;
     }
 }
 
@@ -160,4 +172,13 @@ body {
         max-height: 27%;
         max-width: 100%;
     }
+}
+
+#copyright {
+    width: 100%;
+    display: flex;
+}
+
+#copyright a {
+    color: rgba(94, 68, 59, 0.616);
 }

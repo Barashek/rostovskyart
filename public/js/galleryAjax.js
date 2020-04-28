@@ -1,57 +1,38 @@
 var page = 1;
 var id = 1;
-var animationSpeed = 300;
-var isResized = false;
-var isMobile, colsInRow, onPage;
 
-window.onload = function() {
-    page = 1;
-    galleryAjax();
+var animationSpeed = 250;
+var deviceType;
+
+var colsOnPage, colsInRow;
+
+
+function deviceType() {
+    var user = detect.parse(navigator.userAgent);
+    var deviceType = user.device.type;
+    return deviceType;
 }
 
-window.onresize = function() {
-    if ($('.paint').length == 8 && window.matchMedia('(max-width: 991.5px)').matches) {
-        isResized = true;
-        colsInRow = 6;
-        onPage = 6;
-        galleryAjax();
-    } else if ($('.paint').length == 6 && !window.matchMedia('(max-width: 991.5px)').matches) {
-        isResized = true;
-        colsInRow = 4;
-        onPage = 8;
-        galleryAjax();
-    }
-}
 
 function galleryAjax(event = null) {
-    var devType = deviceType();
-    //var isMobile, colsInRow, onPage;
-
-    if (devType == "Mobile" || devType == "Tablet") {
-        isMobile = true;
+    if (deviceType == 'Mobile' || deviceType == 'Tablet') {
+        colsOnPage = 6;
+        if (deviceType == 'Mobile')
+            colsInRow = 2;
+        else
+            colsInRow = 3;
     } else {
-        isMobile = false;
+        colsOnPage = 8;
+        colsInRow = 4;
     }
-
-    if (!isResized)
-        if (window.matchMedia('(max-width: 991.5px)').matches) {
-            colsInRow = 6;
-            onPage = 6;
-        } else {
-            colsInRow = 4;
-            onPage = 8;
-        }
-
-        // if (window.matchMedia('(min-width: 992px').matches) {
-        //     colsInRow = 4;
-        //     onPage = 8;
-        // }
 
     if (event != null) {
         page = 1;
         id = event.id;
     }
-    var str = 'id=' + id + '&page=' + page + "&onPage=" + onPage;
+
+    var str = 'id=' + id + '&page=' + page + "&onPage=" + colsOnPage;
+
     $.ajax({
         type: "GET",
         url: "/getgallery",
@@ -60,14 +41,17 @@ function galleryAjax(event = null) {
         success: function(data) {
             if (event != null)
                 $('#art-list-btn').text(event.innerText);
-            if (!isResized)
-                $("#gallery").fadeOut(animationSpeed, function() {
-                    createPaints(data);
-                });
-            else
+
+            $("#gallery").fadeOut(animationSpeed, function() {
                 createPaints(data);
+            });
         }
     });
+}
+
+window.onload = function() {
+    deviceType = deviceType();
+    galleryAjax();
 }
 
 function Pagination(event) {
@@ -80,33 +64,35 @@ function Pagination(event) {
     });
 }
 
-function deviceType() {
-    var user = detect.parse(navigator.userAgent);
-    var deviceType = user.device.type;
-    return deviceType
-}
-
 function createPaints(data) {
-    $("#gallery").html('');
-    var n = data.paintings.length;
-    for (var i = 0; i < n; i = i + colsInRow) {
+    $('#gallery').html('');
+    var nPaintings = data.paintings.length;
+
+    for (var i = 0; i < nPaintings; i = i + colsInRow) {
         var row = document.createElement('div');
         row.setAttribute('class', 'row d-flex align-items-center');
-        for (j = i; j < (i + colsInRow); j++) {
+        for (var j = i; j < i + colsInRow; j++) {
             var col = document.createElement('div');
             if (data.paintings[j] != null) {
-                col.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6 paint-col');
+                if (deviceType == 'Mobile')
+                    col.setAttribute('class', 'col-6 paint-col');
+                else if (deviceType == 'Tablet')
+                    col.setAttribute('class', 'col-4 paint-col');
+                else
+                    col.setAttribute('class', 'col-3 paint-col');
+
                 var a = document.createElement('a');
-                a.setAttribute('href', 'img/' + data.paintings[j].path);
+                a.setAttribute('href', 'img/' + data.paintings[j].artist_id + "/" + data.paintings[j].path);
                 a.setAttribute('data-lightbox', 'grp');
-                a.setAttribute('data-title', '"' + data.paintings[j].name + '" ' + data.paintings[j].description + ", " + data.paintings[j].year);
+                a.setAttribute('data-title', '"' + data.paintings[j].name + '" ' + data.paintings[j].description + ", " +
+                    data.paintings[j].year);
                 a.setAttribute('class', 'mod');
                 var img = document.createElement('img');
                 img.setAttribute('class', 'paint');
-                img.setAttribute('src', 'img/' + data.paintings[j].path);
+                img.setAttribute('src', 'img/' + data.paintings[j].artist_id + "/min/" + data.paintings[j].path);
                 img.setAttribute('alt', data.paintings[j].name);
                 var div = document.createElement('div');
-                if (isMobile)
+                if (deviceType == 'Mobile' || deviceType == 'Tablet')
                     div.setAttribute('class', 'info-mobile');
                 else
                     div.setAttribute('class', 'info');
@@ -119,18 +105,15 @@ function createPaints(data) {
             }
             row.appendChild(col);
         }
-        $("#gallery").append(row);
+        $('#gallery').append(row);
     }
-    if (!isResized)
-        $("#gallery").fadeIn(animationSpeed, function() {
-            createUpDownArrows(data);
-        });
-    else
+    $("#gallery").fadeIn(animationSpeed, function() {
         createUpDownArrows(data);
+    });
 }
 
 function createUpDownArrows(data) {
-    if (window.matchMedia('(min-width: 992px)').matches) {
+    if (deviceType == 'Desktop') {
         if (data.isBegin) {
             $('#page-up').css('display', 'none');
         } else {
@@ -142,6 +125,8 @@ function createUpDownArrows(data) {
             $('#page-down').css('display', 'block');
         }
     } else {
+        $('#page-down').css('display', 'none');
+        $('#page-up').css('display', 'none');
         var links = document.createElement('div');
         links.setAttribute('class', 'row');
         var col1 = document.createElement('div');
@@ -160,5 +145,4 @@ function createUpDownArrows(data) {
         links.appendChild(col2);
         document.getElementById('gallery').appendChild(links);
     }
-    isResized = false;
 }
