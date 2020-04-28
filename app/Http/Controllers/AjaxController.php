@@ -13,10 +13,11 @@ class AjaxController extends Controller
 
     public function index()
     {
-        if (isset($_GET['onPage']))
-            $nPainingsOnPage = $_GET['onPage'];
-        if (isset($_GET['page']))
-            $page = $_GET['page'];
+        if (!isset($_GET['onPage']) || !isset($_GET['page']))
+            return response()->json(array(), 500);
+
+        $nPaintingsOnPage = $_GET['onPage'];
+        $page = $_GET['page'];
 
         if (!isset($_POST['nPaintings'])) {
             $nPaintings = Painting::where('artist_id', '=', $_GET['id'])->count();
@@ -25,7 +26,7 @@ class AjaxController extends Controller
             $nPaintings = $_POST['nPaintings'];
         }
 
-        $nPages = ceil($nPaintings / $nPainingsOnPage);
+        $nPages = ceil($nPaintings / $nPaintingsOnPage);
 
         if ($page == 1) {
             $isBegin = true;
@@ -39,9 +40,10 @@ class AjaxController extends Controller
         }
 
 
-        $begin = ($page - 1) * $nPainingsOnPage;
+        $begin = ($page - 1) * $nPaintingsOnPage;
 
-        $paintings = Painting::where('artist_id', '=', $_GET['id'])->skip($begin)->take($nPainingsOnPage)->get();
+        $paintings = Painting::where('artist_id', '=', $_GET['id'])->orderBy('id', 'desc')
+            ->skip($begin)->take($nPaintingsOnPage)->get();
 
         return response()->json(array(
             'paintings' => $paintings,

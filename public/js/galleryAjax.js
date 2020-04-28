@@ -81,6 +81,7 @@ function createPaints(data) {
                 else
                     col.setAttribute('class', 'col-3 paint-col');
 
+                // col.setAttribute('data-proportion-h','1');
                 var a = document.createElement('a');
                 a.setAttribute('href', 'img/' + data.paintings[j].artist_id + "/" + data.paintings[j].path);
                 a.setAttribute('data-lightbox', 'grp');
@@ -91,6 +92,7 @@ function createPaints(data) {
                 img.setAttribute('class', 'paint');
                 img.setAttribute('src', 'img/' + data.paintings[j].artist_id + "/min/" + data.paintings[j].path);
                 img.setAttribute('alt', data.paintings[j].name);
+                img.setAttribute('data-proportion-h','1');
                 var div = document.createElement('div');
                 if (deviceType == 'Mobile' || deviceType == 'Tablet')
                     div.setAttribute('class', 'info-mobile');

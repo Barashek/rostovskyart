@@ -17,7 +17,7 @@ class InsertToPaintingsTable extends Migration
             //
         });
         DB::table('paintings')->insert(array('path' => 'IMG-20181102-WA0003.jpg', 'name' => 'Ялта. Штиль', 'year' => 2017, 'description' => 'холст/масло', 'size' => '60x80', 'artist_id' => 2));
-        DB::table('paintings')->insert(array('path' => 'IMG-20181102-WA0004.jpg', 'name' => 'Когдда цветет мушмула', 'year' => 2017, 'description' => 'холст/масло', 'size' => '90х100', 'artist_id' => 2));
+        DB::table('paintings')->insert(array('path' => 'IMG-20181102-WA0004.jpg', 'name' => 'Когда цветет мушмула', 'year' => 2017, 'description' => 'холст/масло', 'size' => '90х100', 'artist_id' => 2));
         DB::table('paintings')->insert(array('path' => 'IMG-20181102-WA0005.jpg', 'name' => 'Глициния в цвету. Ялта', 'year' => 2017, 'description' => 'холст/масло', 'size' => '80х60', 'artist_id' => 2));
         DB::table('paintings')->insert(array('path' => 'IMG-20181102-WA0006.jpg', 'name' => 'Весенние букеты', 'year' => 2017, 'description' => 'холст/масло', 'size' => '100х90', 'artist_id' => 2));
         DB::table('paintings')->insert(array('path' => 'IMG-20181102-WA0007.jpg', 'name' => 'Цветы и фрукты', 'year' => 2018, 'description' => 'холст/масло', 'size' => '80х100', 'artist_id' => 2));
