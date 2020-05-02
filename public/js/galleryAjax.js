@@ -1,26 +1,23 @@
-var page = 1;
-var id = 1;
+let page = 1;
+let id = 1;
 
-var animationSpeed = 250;
-var deviceType;
+let animationSpeed = 250;
 
-var colsOnPage, colsInRow;
+let colsOnPage, colsInRow;
 
 
 function deviceType() {
-    var user = detect.parse(navigator.userAgent);
-    var deviceType = user.device.type;
-    return deviceType;
+    let user = detect.parse(navigator.userAgent);
+    return user.device.type;
 }
 
 
 function galleryAjax(event = null) {
-    if (deviceType == 'Mobile' || deviceType == 'Tablet') {
-        colsOnPage = 6;
-        if (deviceType == 'Mobile')
-            colsInRow = 2;
-        else
-            colsInRow = 3;
+    colsOnPage = 6;
+    if (isMobile()) {
+        colsInRow = 2;
+    } else if(isTablet()) {
+        colsInRow = 3;
     } else {
         colsOnPage = 8;
         colsInRow = 4;
@@ -31,12 +28,11 @@ function galleryAjax(event = null) {
         id = event.id;
     }
 
-    var str = 'id=' + id + '&page=' + page + "&onPage=" + colsOnPage;
-
+    let paramsString = 'id=' + id + '&page=' + page + "&onPage=" + colsOnPage;
     $.ajax({
         type: "GET",
         url: "/getgallery",
-        data: str,
+        data: paramsString,
 
         success: function(data) {
             if (event != null)
@@ -50,9 +46,8 @@ function galleryAjax(event = null) {
 }
 
 window.onload = function() {
-    deviceType = deviceType();
     galleryAjax();
-}
+};
 
 function Pagination(event) {
     $('#' + event.id).fadeOut(animationSpeed, function() {
@@ -65,78 +60,130 @@ function Pagination(event) {
 }
 
 function createPaints(data) {
-    $('#gallery').html('');
-    var nPaintings = data.paintings.length;
+    let $gallery = $('#gallery');
+    $gallery.html('');
+    let paintingsCount = data.paintings.length;
 
-    for (var i = 0; i < nPaintings; i = i + colsInRow) {
-        var row = document.createElement('div');
-        row.setAttribute('class', 'row d-flex align-items-center');
-        for (var j = i; j < i + colsInRow; j++) {
-            var col = document.createElement('div');
-            if (data.paintings[j] != null) {
-                if (deviceType == 'Mobile')
-                    col.setAttribute('class', 'col-6 paint-col');
-                else if (deviceType == 'Tablet')
-                    col.setAttribute('class', 'col-4 paint-col');
-                else
-                    col.setAttribute('class', 'col-3 paint-col');
-
-                // col.setAttribute('data-proportion-h','1');
-                var a = document.createElement('a');
-                a.setAttribute('href', 'img/' + data.paintings[j].artist_id + "/" + data.paintings[j].path);
-                a.setAttribute('data-lightbox', 'grp');
-                a.setAttribute('data-title', '"' + data.paintings[j].name + '" ' + data.paintings[j].description + ", " +
-                    data.paintings[j].year);
-                a.setAttribute('class', 'mod');
-                var img = document.createElement('img');
-                img.setAttribute('class', 'paint');
-                img.setAttribute('src', 'img/' + data.paintings[j].artist_id + "/min/" + data.paintings[j].path);
-                img.setAttribute('alt', data.paintings[j].name);
-                img.setAttribute('data-proportion-h','1');
-                var div = document.createElement('div');
-                if (deviceType == 'Mobile' || deviceType == 'Tablet')
-                    div.setAttribute('class', 'info-mobile');
-                else
-                    div.setAttribute('class', 'info');
-                var info = '<p>"' + data.paintings[j].name + '"</p><p>' + data.paintings[j].description + ', ' +
-                    data.paintings[j].size + ' см, ' + data.paintings[j].year + '</p>';
-                div.innerHTML = info;
-                col.appendChild(a);
-                a.appendChild(img);
-                col.appendChild(div);
-            }
+    for (let i = 0; i < paintingsCount; i = i + colsInRow) {
+        let row = createRow();
+        for (let j = i; j < i + colsInRow; j++) {
+            let col = fillContentToCol(data.paintings[j]);
             row.appendChild(col);
         }
-        $('#gallery').append(row);
+        $gallery.append(row);
     }
-    $("#gallery").fadeIn(animationSpeed, function() {
+    $gallery.fadeIn(animationSpeed, function() {
         createUpDownArrows(data);
     });
 }
 
+function isTablet() {
+    if(deviceType() == 'Tablet')
+        return true;
+    return false;
+}
+
+function isMobile() {
+    if(deviceType() == 'Mobile')
+        return true;
+    return false;
+}
+
+function isDesktop() {
+    if(deviceType() == 'Desktop')
+        return true;
+    return false;
+}
+
+function fillContentToCol(painting) {
+    let col = document.createElement('div');
+    if (painting != null) {
+        if (isMobile())
+            col.setAttribute('class', 'col-6 paint-col');
+        else if (isTablet())
+            col.setAttribute('class', 'col-4 paint-col');
+        else
+            col.setAttribute('class', 'col-3 paint-col');
+        let a = createLinkTag(painting);
+        let img = createImgTag(painting);
+        let div = createPaintingsDiv();
+        div.innerHTML = createPaintingDescription(painting);
+        col.appendChild(a);
+        a.appendChild(img);
+        col.appendChild(div);
+    }
+    return col;
+}
+
+function createRow() {
+    let row = document.createElement('div');
+    row.setAttribute('class', 'row d-flex align-items-center');
+    return row;
+}
+
+function createPaintingDescription(painting) {
+    return '<p>"' + painting.name + '"</p><p>' + painting.description + ', ' +
+        painting.size + ' см, ' + painting.year + '</p>';
+}
+
+function createLinkTag(painting) {
+    let a = document.createElement('a');
+    a.setAttribute('href', 'img/' + painting.artist_id + "/" + painting.path);
+    a.setAttribute('data-lightbox', 'grp');
+    a.setAttribute('data-title', '"' + painting.name + '" ' + painting.description + ", " +
+        painting.year);
+    a.setAttribute('class', 'mod');
+    return a;
+}
+
+function createImgTag(painting) {
+    let img = document.createElement('img');
+    img.setAttribute('class', 'paint');
+    img.setAttribute('src', 'img/' + painting.artist_id + "/min/" + painting.path);
+    img.setAttribute('alt', painting.name);
+    img.setAttribute('data-proportion-h','1');
+    return img;
+}
+
+function createPaintingsDiv() {
+    let div = document.createElement('div');
+    if (isMobile() || isTablet())
+        div.setAttribute('class', 'info-mobile');
+    else
+        div.setAttribute('class', 'info');
+    return div;
+}
+
+function createMobileCol(side) {
+    let col = document.createElement('div');
+    col.setAttribute('class', 'col');
+    col.style.textAlign = side;
+    return col;
+}
+
 function createUpDownArrows(data) {
-    if (deviceType == 'Desktop') {
+    let $pageUp = $('#page-up');
+    let $pageDown = $('#page-down');
+
+
+    if (isDesktop()) {
         if (data.isBegin) {
-            $('#page-up').css('display', 'none');
+            $pageUp.css('display', 'none');
         } else {
-            $('#page-up').css('display', 'block');
+            $pageUp.css('display', 'block');
         }
         if (data.isEnd) {
-            $('#page-down').css('display', 'none');
+            $pageDown.css('display', 'none');
         } else {
-            $('#page-down').css('display', 'block');
+            $pageDown.css('display', 'block');
         }
     } else {
-        $('#page-down').css('display', 'none');
-        $('#page-up').css('display', 'none');
-        var links = document.createElement('div');
+        $pageDown.css('display', 'none');
+        $pageUp.css('display', 'none');
+        let links = document.createElement('div');
         links.setAttribute('class', 'row');
-        var col1 = document.createElement('div');
-        col1.setAttribute('class', 'col');
-        col1.style.textAlign = 'left';
-        var col2 = document.createElement('div');
-        col2.setAttribute('class', 'col');
-        col2.style.textAlign = 'right';
+        let col1 = createMobileCol('left');
+        let col2 = createMobileCol('right');
         if (!data.isBegin) {
             col1.innerHTML = '<a id="mobile-page-up" onclick="Pagination(this)">Назад</a>';
         }
@@ -146,5 +193,6 @@ function createUpDownArrows(data) {
         }
         links.appendChild(col2);
         document.getElementById('gallery').appendChild(links);
+        //$gallery.append(row);
     }
 }
